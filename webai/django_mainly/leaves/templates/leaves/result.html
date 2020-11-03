@@ -1,0 +1,42 @@
+{% extends 'leaves/base.html' %}
+{% block title %} 葉っぱ推定結果{% endblock %}
+
+{% block content %}
+<div>
+    <h4 class = 'mt-4 mb-5 border-bottom'>推定結果 </h4>
+
+    <table class='table'>
+        <tbody>
+            
+            {% if predicted == '葉っぱ' %}
+            <tr class="alert alert-success" role="alert">
+            {% else %}
+            <tr class="alert alert-danger" role="alert">
+            {% endif %} 
+                <td>推定ラベル</td>
+                <td>{{ predicted }}</td>
+            </tr> 
+        
+            <tr>
+                 <td>推定確率</td>
+                 <td> {{ percentage }}% </td>
+                 
+
+            </tr> 
+
+            <tr>
+                <td>画像ファイル</td>
+                <td> <p class='imgg'><img class = 'preview-img img-fluid'  src={{ photo_data }}> </img></p></td>
+            </tr> 
+           
+            <tr>
+                <td>ファイル名</td>
+                <td> {{ photo_name }} </td>
+            </tr> 
+        </tbody>
+
+    </table>
+
+    <a href="{% url 'leaves:index' %}" class='btn btn-primary'>画像選択画面に戻る</a>
+</div>
+{% endblock %}
